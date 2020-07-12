@@ -15,16 +15,7 @@
 		</div>
 		<% end %>
 
-		<div class="col-xs-3">
-			<h2>New book</h2>
-			<%= form_for(@book) do |f| %>
-			<p>Title</p>
-			<%= f.text_field :title %>
-			<p>Option</p>
-			<%= f.text_area :body %>
-			<span><%= f.submit "Create Book", class: "btn btn-primary btn-lg " %></span>
-			<% end %>
-		</div>
+		<%= render 'books/post', book: @book %>
 
 		<div class="col-xs-9">
 			<h2>Book detail</h2>
