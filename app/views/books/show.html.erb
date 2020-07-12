@@ -34,8 +34,12 @@
 						<th></th>
 						<th><%= link_to @book.title, "#" %></th>
 						<th><%= @book.body %></th>
-						<th><%= link_to "Edit", "#", class: "btn-sm btn-success" %></th>
-						<th><%= link_to "Destroy", "#", class: "btn-sm btn-danger" %></th>
+						<% if @book.user === current_user %>
+							<th><%= link_to "Edit", "#", class: "btn-sm btn-success" %></th>
+						<% end %>
+						<% if @book.user === current_user %>
+							<th><%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %></th>
+						<% end %>
 					</tr>
 				</thead>
 			</table>
