@@ -1,0 +1,46 @@
+
+<div class="container">
+
+	<p class="notice"></p>
+	<div class="row">
+
+		<% if @book.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= @post_image.errors.count %>errors prohibited this obj from being saved:</h2>
+			<ul>
+				<% @book.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<div class="col-xs-3">
+			<h2>New book</h2>
+			<%= form_for(@book) do |f| %>
+			<p>Title</p>
+			<%= f.text_field :title %>
+			<p>Option</p>
+			<%= f.text_area :body %>
+			<span><%= f.submit "Create Book", class: "btn btn-primary btn-lg " %></span>
+			<% end %>
+		</div>
+
+		<div class="col-xs-9">
+			<h2>Book detail</h2>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th></th>
+						<th><%= link_to @book.title, "#" %></th>
+						<th><%= @book.body %></th>
+						<th><%= link_to "Edit", "#", class: "btn-sm btn-success" %></th>
+						<th><%= link_to "Destroy", "#", class: "btn-sm btn-danger" %></th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+
+	</div>
+</div>
+

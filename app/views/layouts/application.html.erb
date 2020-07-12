@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-left">
+        <span>Bookers</span>
+      </div>
+      <nav>
+        <ul class="header-left">
+        <% if user_signed_in? %>
+          <li><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", "#" %></li>
+          <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span><%= link_to "Users", "#" %></li>
+          <li><span class="glyphicon glyphicon-book" aria-hidden="true"></span><%= link_to "Books", books_path %></li>
+          <li><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to "Home", "#" %></li>
+          <li><span class="glyphicon glyphicon-link" aria-hidden="true"></span><%= link_to "About", "#" %></li>
+          <li><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= link_to "sign up", new_user_registration_path %></li>
+          <li><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><%= link_to "login", new_user_session_path %></li>
+        <% end %>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
